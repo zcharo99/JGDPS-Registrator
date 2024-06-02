@@ -108,7 +108,7 @@ bool ValidateAppPath(std::string_view appPath) {
 
 int main() {
     std::string appPath;
-    std::cout << "Enter the application path (e.g., \"C:/Path/To/YourApp.exe\" \"%1\"): ";
+    std::cout << "Enter the launcher's path (e.g., C:/launcher/path/Launcher.exe): ";
     std::getline(std::cin, appPath);
 
     if (!ValidateAppPath(appPath)) {
@@ -119,9 +119,9 @@ int main() {
     std::this_thread::sleep_for(std::chrono::seconds(2));
 
     if (IsRunningAsAdmin()) {
-        std::cout << "Running with administrator privileges." << std::endl;
+        std::cout << "Already running with administrator privileges." << std::endl;
         if (RegisterCustomUrlScheme(appPath)) {
-            std::cout << "Success!" << std::endl;
+            std::cout << "Success! You can now launch JGDPS Launcher from the browser with the protocol jgdps://" << std::endl;
             std::this_thread::sleep_for(std::chrono::seconds(2));
         }
         else {
