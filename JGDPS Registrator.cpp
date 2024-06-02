@@ -97,12 +97,6 @@ bool ValidateAppPath(std::string_view appPath) {
     // Convert forward slashes to backslashes
     std::replace(path.begin(), path.end(), '/', '\\');
 
-    // Check if the file has a valid extension (.exe or .scr)
-    if (PathFindExtensionA(path.c_str()) != ".exe" && PathFindExtensionA(path.c_str()) != ".scr") {
-        std::cout << "Invalid file extension. File must have .exe or .scr extension." << std::endl;
-        return false;
-    }
-
     // Check if the file exists
     if (!PathFileExistsA(path.c_str())) {
         std::cout << "File does not exist." << std::endl;
