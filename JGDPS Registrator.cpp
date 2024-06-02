@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <thread>
 
+// code here!
+
 #pragma comment(lib, "Shlwapi.lib")
 
 bool IsRunningAsAdmin() {
