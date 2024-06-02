@@ -60,7 +60,7 @@ void RelaunchAsAdmin() {
 
 bool RegisterCustomUrlScheme(const std::string& appPath) {
     HKEY hKey;
-    LPCWSTR urlScheme = L"appname"; // Use wide-character string
+    LPCWSTR urlScheme = L"jgdps"; // Use wide-character string
 
     // Convert narrow-character string to wide-character string
     int size = MultiByteToWideChar(CP_UTF8, 0, appPath.c_str(), -1, NULL, 0);
@@ -72,7 +72,7 @@ bool RegisterCustomUrlScheme(const std::string& appPath) {
     if (result != ERROR_SUCCESS) {
         return false;
     }
-    RegSetValueExW(hKey, NULL, 0, REG_SZ, (const BYTE*)L"URL:AppName Protocol", sizeof(L"URL:AppName Protocol"));
+    RegSetValueExW(hKey, NULL, 0, REG_SZ, (const BYTE*)L"URL:JGDPS Protocol", sizeof(L"URL:JGDPS Protocol"));
     RegSetValueExW(hKey, L"URL Protocol", 0, REG_SZ, (const BYTE*)L"", sizeof(L""));
 
     HKEY hSubKey;
