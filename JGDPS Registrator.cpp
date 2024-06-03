@@ -108,7 +108,7 @@ bool ValidateAppPath(std::string_view appPath) {
 
 int main() {
     std::string appPath;
-    std::cout << "Enter the launcher's path (e.g., C:/launcher/path/Launcher.exe): ";
+    std::cout << "Enter the launcher's path with backslashes (e.g., C:\\launcher\\path\\Launcher.exe): ";
     std::getline(std::cin, appPath);
 
     if (!ValidateAppPath(appPath)) {
