@@ -106,10 +106,20 @@ bool ValidateAppPath(std::string_view appPath) {
     return true;
 }
 
+std::string ExpandEnvironmentVariable(const std::string& variable) {
+    DWORD size = ExpandEnvironmentStringsA(variable.c_str(), NULL, 0);
+    if (size == 0) {
+        return std::string();
+    }
+    std::string result(size, '\0');
+    ExpandEnvironmentStringsA(variable.c_str(), &result[0], size);
+    result.pop_back();
+    return result;
+}
+
 int main() {
-    std::string appPath;
-    std::cout << "Enter the launcher's path with backslashes (e.g., C:\\launcher\\path\\Launcher.exe): ";
-    std::getline(std::cin, appPath);
+    // hardcoded launcher path w/ environment variable expander
+    std::string appPath = ExpandEnvironmentVariable("%appdata%\\JGDPS\\launcher\\JGDPS Launcher.exe");
 
     if (!ValidateAppPath(appPath)) {
         std::this_thread::sleep_for(std::chrono::seconds(2));
